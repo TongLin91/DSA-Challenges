@@ -46,3 +46,41 @@ func mergeSort(_ arr: [Int]) -> [Int]{
     return baseArr.removeLast()
 }
 
+
+//Insertion sort
+func insertionSort(_ arr: [Int]) -> [Int]{
+    guard arr.count > 1 else { return arr }
+    var newArr: [Int] = []
+    for num in arr{
+        var temp: [Int] = []
+        
+        if newArr.count == 0{
+            temp.append(num)
+        }else if newArr.first! > num{
+            temp = [num] + newArr
+        }else if newArr.last! < num{
+            temp = newArr + [num]
+        }else{
+            for index in 0..<newArr.count-1{
+                temp.append(newArr[index])
+                if newArr[index] <= num && newArr[index+1] >= num{
+                    temp.append(num)
+                }
+            }
+            temp.append(newArr.last!)
+        }
+        print(temp)
+        print(newArr)
+        print("")
+        newArr = temp
+    }
+    return newArr
+}
+
+
+
+
+
+
+
+
