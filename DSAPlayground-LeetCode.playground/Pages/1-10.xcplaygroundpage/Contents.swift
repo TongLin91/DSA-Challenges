@@ -109,3 +109,28 @@ func addTwoNumbers(_ l1: ListNode?, _ l2: ListNode?) -> ListNode? {
     return head
 }
 
+
+//3. Longest Substring Without Repeating Characters
+//Given a string, find the length of the longest substring without repeating characters.
+func lengthOfLongestSubstring(_ s: String) -> Int {
+    guard s.characters.count > 1 else { return s.characters.count }
+    let arr: [Character] = Array(s.characters)
+    var longest = 0
+    for index in 0..<arr.count-1{
+        var dict: [Character: Int] = [:]
+        for current in index..<arr.count{
+            if dict[arr[current]] != nil{
+                break
+            }else{
+                dict[arr[current]] = 1
+            }
+        }
+        if dict.count > longest{
+            longest = dict.count
+        }
+    }
+    return longest
+}
+
+lengthOfLongestSubstring("as")
+
