@@ -78,6 +78,23 @@ func insertionSort(_ arr: [Int]) -> [Int]{
 }
 
 
+//Bubble sort
+func bubbleSort(_ arr: [Int]) -> [Int]{
+    var returnArr = arr
+    var index = returnArr.count-1
+    while index > 0 {
+        for curr in 0..<index{
+            //compare and swap
+            if returnArr[curr] > returnArr[curr+1]{
+                let temp = returnArr[curr]
+                returnArr[curr] = returnArr[curr+1]
+                returnArr[curr+1] = temp
+            }
+        }
+        index -= 1
+    }
+    return returnArr
+}
 
 
 
