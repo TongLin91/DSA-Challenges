@@ -3,7 +3,7 @@ import Foundation
 //Quick sort
 func quickSort(_ arr: [Int]) -> [Int]{
     guard arr.count > 1 else { return arr }
-    
+    //determine pivot and break array to two base on pivot
     let pivot = arr[0]
     var low: [Int] = []
     var high: [Int] = []
@@ -33,7 +33,7 @@ func mergeSort(_ arr: [Int]) -> [Int]{
             let first = baseArr.removeLast()
             var second = baseArr.removeLast()
             var sorted: [Int] = []
-            
+            //merge two arrays to single sorted array
             for num in first{
                 while second.count > 0 && second.first! < num {
                     sorted.append(second.removeFirst())
@@ -51,6 +51,7 @@ func mergeSort(_ arr: [Int]) -> [Int]{
 func insertionSort(_ arr: [Int]) -> [Int]{
     guard arr.count > 1 else { return arr }
     var newArr: [Int] = []
+    //insert number one by one to new array
     for num in arr{
         var temp: [Int] = []
         
@@ -69,9 +70,6 @@ func insertionSort(_ arr: [Int]) -> [Int]{
             }
             temp.append(newArr.last!)
         }
-        print(temp)
-        print(newArr)
-        print("")
         newArr = temp
     }
     return newArr
@@ -97,7 +95,7 @@ func bubbleSort(_ arr: [Int]) -> [Int]{
 }
 
 
-
+//
 
 
 
