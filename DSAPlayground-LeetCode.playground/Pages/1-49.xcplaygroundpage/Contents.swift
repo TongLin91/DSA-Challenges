@@ -176,6 +176,34 @@ func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
     }
 }
 
-findMedianSortedArrays([], [1])
+
+//5. Longest Palindromic Substring
+//Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+func longestPalindrome(_ s: String) -> String {
+    var arrString = Array(s.characters)
+    var longestRange = s.characters.count-1
+    while longestRange > 0{
+        for i in longestRange..<s.characters.count{
+            var startPointer = i-longestRange
+            var endPointer = i
+            var isPalindrome = true
+            while startPointer < endPointer {
+                if arrString[startPointer] != arrString[endPointer]{
+                    isPalindrome = false
+                    break
+                }
+                startPointer += 1
+                endPointer -= 1
+            }
+            
+            if isPalindrome{
+                return String(arrString[i-longestRange...i])
+            }
+        }
+        longestRange -= 1
+    }
+    
+    return s.substring(to: s.index(after: s.startIndex))
+}
 
 
