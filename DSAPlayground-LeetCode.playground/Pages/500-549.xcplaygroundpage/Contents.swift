@@ -26,5 +26,3 @@ func findRelativeRanks(_ nums: [Int]) -> [String] {
     return finalArr
 }
 
-
-findRelativeRanks([3,4,2,1,5])

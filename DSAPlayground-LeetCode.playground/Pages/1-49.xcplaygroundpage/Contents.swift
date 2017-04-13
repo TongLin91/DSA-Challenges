@@ -139,11 +139,10 @@ func lengthOfLongestSubstring(_ s: String) -> Int {
 //4. Median of Two Sorted Arrays
 //There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
 func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
-    let medianIndex = (nums1.count + nums2.count) / 2
     var mergedArr = [Int]()
     var nums1Pointer = 0
     var nums2Pointer = 0
-    while mergedArr.count <= medianIndex {
+    while nums1Pointer != nums1.count && nums2Pointer != nums2.count {
         if nums1[nums1Pointer] < nums2[nums2Pointer]{
             mergedArr.append(nums1[nums1Pointer])
             nums1Pointer += 1
@@ -152,13 +151,31 @@ func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
             nums2Pointer += 1
         }
     }
-    
-    if (nums1.count + nums2.count) % 2 == 1{
-        return Double(mergedArr[mergedArr.count-1])
+    while nums1Pointer != nums1.count {
+        mergedArr.append(nums1[nums1Pointer])
+        nums1Pointer += 1
     }
-    return Double(mergedArr[mergedArr.count-1])
+    
+    while nums2Pointer != nums2.count {
+        mergedArr.append(nums2[nums2Pointer])
+        nums2Pointer += 1
+    }
+    
+    switch mergedArr.count {
+    case 0:
+        return 0
+    case 1:
+        return Double(mergedArr[0])
+    default:
+        let medianIndex = (nums1.count + nums2.count) / 2
+        
+        if (nums1.count + nums2.count) % 2 == 0{
+            return Double(mergedArr[medianIndex] + mergedArr[medianIndex-1]) / 2
+        }
+        return Double(mergedArr[medianIndex])
+    }
 }
 
-findMedianSortedArrays([1,2,7], [4,5,6])
+findMedianSortedArrays([], [1])
 
 
